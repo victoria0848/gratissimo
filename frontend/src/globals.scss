@@ -1,0 +1,51 @@
+// FARVER
+$ACCENT-red: #AB0E0E;   
+$dark-red: #8B0808;   
+$bg-light: #F5EEEC;       
+$text-dark: #212121;       
+$white: #ffffff;
+
+// RESPONSIVE BREAKPOINTS 
+$breakpoint-mobile: 430px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1200px;
+
+// GLOBALE NULLSTILLER & TYPOGRAFI
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+}
+
+body {
+  font-family: Montserat, Arial, sans-serif;
+  background-color: $white;
+  color: $text-dark;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  width: 100%;
+  max-width: $breakpoint-desktop;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.universalSlider {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 20px 0;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > * {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+}
