@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContextProvider';
+import style from './Header.module.scss';
 
 export function Header() {
     const { authToken } = useContext(AuthContext);

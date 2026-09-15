@@ -1,0 +1,124 @@
+@use '../../globals.scss' as g;
+
+.footerStyle {
+  width: 100%;
+  background-color: g.$dark-red; 
+  color: g.$white;
+  padding: 50px 20px;
+  box-sizing: border-box;
+}
+
+.footerContainer {
+  max-width: g.$breakpoint-desktop; 
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; 
+  gap: 30px;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: g.$white;
+    }
+
+    a {
+      color: g.$white;
+      text-decoration: none;
+      font-size: 0.95rem;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+
+      &:hover {
+        opacity: 1;
+        text-decoration: underline;
+      }
+    }
+
+    p {
+      font-size: 0.95rem;
+      margin: 0;
+      opacity: 0.9;
+    }
+  }
+}
+
+.newsletterSection {
+  max-width: 320px;
+
+  .inputGroup {
+    display: flex;
+    margin-top: 12px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: g.$white;
+    border: 1px solid #cccccc;
+
+    input[type="email"] {
+      flex: 1;
+      padding: 10px 15px;
+      border: none;
+      outline: none;
+      font-size: 0.95rem;
+      color: g.$text-dark;
+    }
+
+    .submitBtn {
+      background-color: g.$accent-red; 
+      border: none;
+      padding: 0 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #770907;
+      }
+    }
+  }
+
+  .newsletterAlert {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffe082;
+  }
+}
+
+.contactSection {
+  .addressBlock {
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .socialNav {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+
+    img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+    }
+  }
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

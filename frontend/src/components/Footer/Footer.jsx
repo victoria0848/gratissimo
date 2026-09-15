@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContextProvider";
+import style from "./Footer.module.scss";
 
 export function Footer() {
     const [email, setEmail] = useState("");
