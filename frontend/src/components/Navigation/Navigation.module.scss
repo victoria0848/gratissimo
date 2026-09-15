@@ -1,0 +1,79 @@
+@use '../../globals.scss' as g;
+
+// LOGO-HEADER
+.mainHeader {
+  width: 100%;
+  background-color: g.$accent-red;
+}
+
+.navStyle {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logoLink {
+  padding: 15px 20px;
+  width: 100%;
+  max-width: g.$breakpoint-desktop;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.logoFrame {
+  margin: 0;
+  padding: 0;
+}
+
+.logoImage {
+  height: 45px; 
+  display: block;
+}
+
+//NAVBAR
+.navStyle ul {
+  width: 100%;
+  background-color: g.$dark-red; 
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  gap: 30px; 
+  list-style: none; 
+  padding: 12px 20px;
+  margin: 0;
+  flex-wrap: wrap;
+
+  @media (max-width: g.$breakpoint-tablet) {
+    gap: 15px;
+  }
+
+  
+  @media (min-width: g.$breakpoint-tablet) {
+    justify-content: flex-start;
+  }
+
+  a, .logoutBtn {
+    color: g.$white;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.8; 
+    }
+  }
+}
+
+.divider {
+  color: g.$white;
+  opacity: 0.6;
+  font-size: 0.95rem;
+  user-select: none;
+}

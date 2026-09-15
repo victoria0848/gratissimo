@@ -1,0 +1,22 @@
+.sliderStyle {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+.quote {
+  font-size: 1.15rem;
+  font-style: italic;
+  color: #444444;
+}
+.author {
+  font-weight: 700;
+  margin-top: 10px;
+}
+.buttons button {
+  background-color: #f5f5f7;
+  border: 1px solid #cccccc;
+  padding: 5px 12px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+}

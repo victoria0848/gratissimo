@@ -1,5 +1,5 @@
 // FARVER
-$ACCENT-red: #AB0E0E;   
+$accent-red: #AB0E0E;   
 $dark-red: #8B0808;   
 $bg-light: #F5EEEC;       
 $text-dark: #212121;       
@@ -23,6 +23,16 @@ body {
   color: $text-dark;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+main {
+  flex: 1;
 }
 
 .container {

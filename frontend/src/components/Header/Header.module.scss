@@ -1,0 +1,45 @@
+@use '../../globals.scss' as g;
+
+.subHeader {
+  width: 100%;
+  background-color: g.$white; 
+  border-bottom: 1px solid #eaeaea;
+  padding: 15px 40px; 
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+
+  // MOBILE
+  @media (max-width: g.$breakpoint-tablet) {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding: 15px 20px;
+  }
+}
+
+.infoText {
+  font-size: 1.05rem;
+  color: #444444;
+  font-weight: 500;
+  margin: 0;
+}
+
+.loginCta {
+  background-color: g.$dark-red; 
+  color: g.$white; 
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color 0.2s;
+  display: inline-block;
+
+  &:hover {
+    background-color: #5f0303; 
+  }
+}

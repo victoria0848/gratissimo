@@ -1,0 +1,227 @@
+@use '../globals.scss' as g;
+
+.frontpageWrapper {
+  width: 100%;
+  max-width: g.$breakpoint-desktop; 
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  box-sizing: border-box;
+}
+
+// SEARCH & FILTRERING
+.searchSection {
+  width: 100%;
+  background-color: g.$bg-light; 
+  padding: 40px;
+  border-radius: 8px;
+  box-sizing: border-box;
+
+  h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: g.$text-dark;
+    margin-bottom: 20px;
+  }
+}
+
+.searchForm {
+  display: flex;
+  flex-direction: column;
+}
+
+//SEARCHBAR
+.searchBarRow {
+  display: flex;
+  background-color: g.$white;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding-left: 15px;
+
+  .searchIcon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    opacity: 0.5;
+  }
+}
+
+.searchInput {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: g.$text-dark;
+  background: transparent;
+}
+
+.searchBtn {
+  background-color: g.$accent-red; 
+  color: g.$white;
+  border: none;
+  padding: 0 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  
+  &:hover { background-color: #830a07; }
+}
+
+.filterTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: g.$text-dark;
+  margin: 25px 0 10px 0;
+}
+
+// DROPDOWNS
+.filterRow {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+
+  @media (max-width: g.$breakpoint-tablet) {
+    grid-template-columns: 1fr; 
+  }
+
+  select {
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 6px; 
+    background-color: g.$white;
+    font-size: 0.95rem;
+    color: g.$text-dark;
+    outline: none;
+    cursor: pointer;
+  }
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+
+  .resetBtn {
+    background: none;
+    border: none;
+    color: #666666;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+    &:hover { color: g.$accent-red; }
+  }
+}
+
+// FIND JOB
+.categoryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  
+  @media (max-width: g.$breakpoint-tablet) { 
+    grid-template-columns: 1fr; 
+  }
+
+  .categoryCard {
+    background-color: g.$white;
+    border: 1px solid #eaeaea;
+    padding: 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: border-color 0.2s;
+
+    h4 { color: g.$text-dark; font-size: 1.1rem; margin: 0; }
+    .jobCount { font-weight: 700; color: g.$accent-red; }
+    
+    &:hover { border-color: g.$accent-red; }
+  }
+}
+
+// NEWS
+.newsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  
+  @media (max-width: g.$breakpoint-tablet) { 
+    grid-template-columns: 1fr; 
+  }
+
+  .newsCard {
+    background-color: g.$white;
+    border: 1px solid #eaeaea;
+    border-radius: 6px;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+
+    figure {
+      width: 100%;
+      height: 180px;
+      margin: 0;
+      img { 
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+      }
+    }
+    
+    .newsContent {
+      padding: 20px;
+      h4 { 
+        
+        color: g.$text-dark; 
+        font-size: 1.1rem; 
+        margin-bottom: 8px; 
+      }
+      p { 
+        color: #666666; 
+        font-size: 0.95rem; 
+        line-height: 1.4; 
+      }
+    }
+  }
+}
+
+// REVIEWS 
+.reviewSection {
+  text-align: center;
+  
+  .sliderStyle {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: #fafafa;
+    padding: 30px;
+    border-radius: 8px;
+    
+    .quoteText { 
+      font-size: 1.2rem; 
+      font-style: italic; 
+      color: #444444; 
+      line-height: 1.5;
+    }
+    
+    .authorName { 
+      font-weight: 700; 
+      color: g.$ACCENT-red; 
+      margin-top: 10px;
+    }
+  }
+}
