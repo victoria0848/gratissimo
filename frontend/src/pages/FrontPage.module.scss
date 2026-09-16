@@ -128,8 +128,9 @@
 // FIND JOB
 .categoryGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); 
   gap: 20px;
+  width: 100%;
   
   @media (max-width: g.$breakpoint-tablet) { 
     grid-template-columns: 1fr; 
@@ -137,19 +138,40 @@
 
   .categoryCard {
     background-color: g.$white;
-    border: 1px solid #eaeaea;
-    padding: 20px;
-    border-radius: 4px;
+    border: 1px solid #e2d9d5;
+    border-radius: 12px; 
     text-decoration: none;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    transition: border-color 0.2s;
+    align-items: stretch;
+    overflow: hidden;
+    height: 52px; 
 
-    h4 { color: g.$text-dark; font-size: 1.1rem; margin: 0; }
-    .jobCount { font-weight: 700; color: g.$accent-red; }
+    .categoryName { 
+      color: g.$text-dark; 
+      font-size: 1rem; 
+      font-weight: 500; 
+      display: flex;
+      align-items: center;
+      padding-left: 25px; 
+    }
+
+    .jobCount { 
+      background-color: g.$bg-light; 
+      color: g.$text-dark;
+      font-weight: 500; 
+      font-size: 0.95rem;
+      width: 65px; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-left: 1px solid #e2d9d5;
+    }
     
-    &:hover { border-color: g.$accent-red; }
+    &:hover { 
+      border-color: g.$accent-red;
+      .categoryName { color: g.$accent-red; }
+    }
   }
 }
 
@@ -220,7 +242,7 @@
     
     .authorName { 
       font-weight: 700; 
-      color: g.$ACCENT-red; 
+      color: g.$accent-red; 
       margin-top: 10px;
     }
   }
