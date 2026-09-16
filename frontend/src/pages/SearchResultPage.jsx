@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react'; 
 import { useLocation } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch';
 import { SearchBar } from '../components/SearchBar/SearchBar'; 
@@ -34,6 +34,7 @@ export function SearchResultPage() {
 
     const indexOfLastJob = currentPage * jobsPerPage;
     const indexOfFirstJob = indexOfLastJob - jobsPerPage;
+
     const currentJobs = filteredJobs.slice(indexOfFirstJob, indexOfLastJob);
 
     const pageNumbers = [];
@@ -59,7 +60,7 @@ export function SearchResultPage() {
                 <p className={style.resultCount}>Viser {filteredJobs.length} ledige stillinger</p>
                 
                 {filteredJobs.length > 0 ? (
-                    filteredJobs.map(job => (
+                    currentJobs.map(job => (
                         <JobCard 
                             key={job.id}
                             id={job.id}

@@ -1,0 +1,160 @@
+@use '../../globals.scss' as g;
+
+.jobCard {
+  background-color: g.$white;
+  border: 1px solid #e2d9d5; 
+  border-radius: 8px;
+  padding: 25px;
+  margin-bottom: 25px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.cardTopRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  @media (max-width: g.$breakpoint-tablet) {
+    flex-direction: column;
+  }
+}
+
+.leftInfo {
+  flex: 1;
+
+  .metaCompany {
+    font-size: 0.85rem;
+    color: #888888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 5px 0 12px 0;
+    color: g.$text-dark;
+  }
+
+  .categoryText {
+    font-weight: 600;
+    color: g.$accent-red;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+  }
+
+  .teaserText {
+    color: #666666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}
+
+.rightInfo {
+  text-align: right;
+
+  @media (max-width: g.$breakpoint-tablet) {
+    text-align: left;
+    margin-top: 10px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    li {
+      font-size: 0.9rem;
+      color: #555555;
+      
+      strong {
+        color: g.$text-dark;
+      }
+    }
+  }
+}
+
+
+.expandedContent {
+  border-top: 1px solid #eaeaea;
+  margin-top: 20px;
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr; 
+  gap: 40px;
+
+  @media (max-width: g.$breakpoint-tablet) {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .detailsLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  h5 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: g.$text-dark;
+    margin: 0 0 8px 0;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: #555555;
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
+.contactAddress {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+// BUTTONS STYLING
+.cardActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 25px;
+
+  button {
+    border: none;
+    padding: 8px 26px;
+    font-weight: 600;
+    border-radius: 20px; 
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s, color 0.2s;
+  }
+
+  .lukBtn, .gemBtn, .aabenBtn {
+    background-color: #f5f5f7;
+    color: g.$text-dark;
+    border: 1px solid #cccccc;
+
+    &:hover {
+      background-color: #e4e4e7;
+    }
+  }
+
+  .gemHeartBtn {
+    background-color: #fff0f0;
+    color: g.$dark-red;
+    border: 1px solid #ffcdd2;
+
+    &:hover {
+      background-color: #ffebee;
+    }
+  }
+}

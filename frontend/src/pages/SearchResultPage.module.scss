@@ -1,0 +1,129 @@
+@use '../globals.scss' as g;
+
+.searchPageWrapper {
+  width: 100%;
+  max-width: g.$breakpoint-desktop; 
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  box-sizing: border-box;
+
+  // TABLET & MOBILE
+  @media (max-width: g.$breakpoint-tablet) {
+    padding: 20px 15px;
+    gap: 25px;
+  }
+}
+
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+}
+
+.resultCount {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: g.$text-dark;
+  margin-bottom: 5px;
+
+  @media (max-width: g.$breakpoint-mobile) {
+    font-size: 1rem; 
+  }
+}
+
+// PAGINATION
+.paginationNav {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  width: 100%;
+
+  @media (max-width: g.$breakpoint-mobile) {
+    margin-top: 20px;
+  }
+}
+
+.paginationList {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap; 
+
+  // TABLET
+  @media (max-width: g.$breakpoint-tablet) {
+    gap: 8px;
+  }
+
+  // MOBILE
+  @media (max-width: g.$breakpoint-mobile) {
+    gap: 6px;
+  }
+
+  .pageBtn, .activePageBtn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid #cccccc;
+    background-color: g.$white;
+    color: #666666;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+
+    // TABLET 
+    @media (max-width: g.$breakpoint-tablet) {
+      width: 32px;
+      height: 32px;
+      font-size: 0.85rem;
+    }
+
+    // MOBILE
+    @media (max-width: g.$breakpoint-mobile) {
+      width: 28px;
+      height: 28px;
+      font-size: 0.8rem;
+    }
+
+    &:hover {
+      border-color: g.$accent-red; 
+      color: g.$accent-red;
+    }
+  }
+
+  .activePageBtn {
+    background-color: g.$dark-red; 
+    border-color: g.$dark-red;
+    color: g.$white; 
+  }
+}
+
+.noResults, .centerMsg {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: g.$white;
+  border-radius: 8px;
+  border: 1px dashed #cccccc;
+  
+  p { 
+    font-size: 1.1rem; 
+    color: #555555; 
+    margin: 0;
+  }
+
+  @media (max-width: g.$breakpoint-mobile) {
+    padding: 40px 15px;
+    p { font-size: 1rem; }
+  }
+}
