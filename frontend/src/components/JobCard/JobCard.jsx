@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import style from './JobCard.module.scss';
 
 export function JobCard({ 
     id, 
