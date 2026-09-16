@@ -1,0 +1,123 @@
+@use '../../globals.scss' as g;
+
+.searchSection {
+  width: 100%;
+  background-color: g.$bg-light;
+  padding: 40px;
+  border-radius: 8px;
+  box-sizing: border-box;
+
+  h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: g.$text-dark;
+    margin-bottom: 20px;
+  }
+}
+
+.searchForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.searchBarRow {
+  display: flex;
+  background-color: g.$white;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding-left: 15px;
+
+  .searchIcon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    opacity: 0.5;
+  }
+}
+
+.searchInput {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: g.$text-dark;
+  background: transparent;
+}
+
+.searchBtn {
+  background-color: g.$accent-red;
+  color: g.$white;
+  border: none;
+  padding: 0 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  
+  &:hover { 
+    background-color: #830a07; 
+  }
+}
+
+.filterTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: g.$text-dark;
+  margin: 25px 0 10px 0;
+}
+
+// DROPDOWNS
+.filterRow {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 15px;
+
+  @media (max-width: g.$breakpoint-tablet) {
+    grid-template-columns: 1fr; 
+  }
+
+  select {
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 6px; 
+    background-color: g.$white;
+    font-size: 0.95rem;
+    color: g.$text-dark;
+    outline: none;
+    cursor: pointer;
+    width: 100%;
+
+    &:focus {
+      border-color: g.$accent-red;
+    }
+  }
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+
+  .resetBtn {
+    background: none;
+    border: none;
+    color: #666666;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+    
+    &:hover { 
+      color: g.$accent-red; 
+    }
+  }
+}
