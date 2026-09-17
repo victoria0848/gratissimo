@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthHeader } from '../components/AuthHeader/AuthHeader'; 
+import style from './LoginPage.module.scss';
 
 export function CreateProfilePage() {
     const [message, setMessage] = useState("");
@@ -45,13 +46,14 @@ export function CreateProfilePage() {
     };
 
     return (
-        <main>
+        <main className="container">
             <AuthHeader />
 
-            <section>
+            // Create profile
+            <section className={style.formWrapper}>
                 <h2>Opret ny profil</h2>
                 <br />
-                <form onSubmit={register}>
+                <form onSubmit={register} className={style.authForm}>
                     <label>
                         Email
                         <input type="email" name="email" placeholder="Skriv din email..." required />
@@ -82,12 +84,13 @@ export function CreateProfilePage() {
                         <input type="tel" name="phone" placeholder="Skriv dit telefon nummer..." required />
                     </label>
 
-                    <input type="submit" value="Opret profil"/>
+                    <input type="submit" value="Opret profil" className={style.submitBtn}/>
                 </form>
 
-                {message && <p style={{ color: "#AB0E0E" }}><b>{message}</b></p>}
+                
+                {message && <b className={style.feedbackMsg}>{message}</b>}
                 <br />
-                <NavLink to="/login" style={{ color: "#AB0E0E" }}>Log ind</NavLink>
+                <NavLink to="/login" className={style.toggleLink}>Log ind</NavLink>
             </section>
         </main>
     );

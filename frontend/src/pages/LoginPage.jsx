@@ -1,10 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContextProvider';
+import { AuthHeader } from '../components/AuthHeader/AuthHeader'; 
+import style from './LoginPage.module.scss';
 
 export function LoginPage() {
     const { authToken, setAuthToken, logout } = useContext(AuthContext);
     const [message, setMessage] = useState("");
+    const navigate = useNavigate();
 
     const login = async (e) => {
         e.preventDefault();
@@ -34,25 +37,16 @@ export function LoginPage() {
     };
 
     return (
-        <main>
+        <main className="container">
+            <AuthHeader />
+
             {!authToken ? (
                 <>
-                    {/* INFOBOX */}
-                    <header>
-                        <h1>Log ind eller opret dig som bruger</h1>
-                        <p>
-                            Når du opretter en profil på Gratissimo får du adgang til at oprette, slette og
-                            redigere i job annoncer. Som privatperson får du mulighed for at gemme de jobs
-                            du kunne være interesseret i.
-                        </p>
-                        <NavLink to="/registrer" style={{ color: "#AB0E0E" }}>Log ind for at gå til min side</NavLink>
-                    </header>
-
                     {/* LOGIN FORM */}
-                    <section>
+                    <section className={style.formWrapper}>
                         <h2>Log ind</h2>
-                        <br />
-                        <form onSubmit={login}>
+                        
+                        <form onSubmit={login} className={style.authForm}>
                             <label >
                                 Email
                                 <input type="email" name="email" placeholder="Skriv din email..." required />
@@ -63,23 +57,23 @@ export function LoginPage() {
                                 <input type="password" name="password" placeholder="Skriv dit password..." required />
                             </label>
 
-                            <input type="submit" value="Log ind" />
+                            <input type="submit" value="Log ind" className={style.submitBtn} />
                         </form>
 
-                        {message && <p><b>{message}</b></p>}
+                        {message && <b className={style.feedbackMsg}>{message}</b>}
                         <br />
-                        <NavLink to="/registrer" style={{ color: "#AB0E0E" }}>Opret bruger</NavLink>
+                        <NavLink to="/registrer" className={style.submitBtn}>Opret bruger</NavLink>
                     </section>
                 </>
             ) : (
                 /* IF LOG IN */
-                <section style={{ textAlign: "center", padding: "60px 0" }}>
+                <section className={style.successWrapper}>
                     <h1>Du er logget ind!</h1>
                     <p>Din session er active med dit Bearer Token gemt sikkert i browserens cookies.</p>
                     <br />
-                    <NavLink to="/" style={{ color: "#AB0E0E"}}>Gå til forsiden</NavLink>
+                    <NavLink to="/" className={style.toggleLink}>Gå til forsiden</NavLink>
                     <br /><br />
-                    <button type="button" onClick={logout}>
+                    <button type="button" onClick={logout} className={style.logoutBtn}>
                         Log ud nu
                     </button>
                 </section>
