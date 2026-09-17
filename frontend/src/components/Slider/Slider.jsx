@@ -18,16 +18,8 @@ export function Slider() {
             );
         }, 5000); 
 
-        return () => clearInterval(timer);
-    }, [sliderIndex]);
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            forward(); 
-        }, 5000); 
-
         return () => clearInterval(timer); 
-    }, [sliderIndex]);
+    }, []); 
 
     return (
         <figure className={style.sliderStyle}>
