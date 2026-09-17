@@ -3,7 +3,7 @@ import { MainLayout } from "./layout/MainLayout";
 import { Frontpage } from "./pages/Frontpage";
 import { NewsPage } from "./pages/NewsPage";
 import { SearchResultPage } from "./pages/SearchResultPage";
-import { CreateAnnoncePage } from "./pages/CreateAnnoncePage";
+import { CreateJobPage } from './pages/CreateJobPage'; 
 import { CreateProfilePage } from "./pages/CreateProfilePage";
 import { LoginPage } from "./pages/LoginPage";
 import { AuthcontextProvider } from "./context/AuthContextProvider";
@@ -20,7 +20,7 @@ export default function App() {
           <Route index element={<Frontpage />} />
           <Route path="/nyheder" element={<NewsPage />} />
           <Route path="/jobs" element={<SearchResultPage />} />
-          <Route path="/opret" element={<CreateAnnoncePage />} />
+          <Route path="opret" element={<CreateJobPage />} />
           <Route path="/registrer" element={<CreateProfilePage />} />
           <Route path="/login" element={<LoginPage />} />
         </Route>
