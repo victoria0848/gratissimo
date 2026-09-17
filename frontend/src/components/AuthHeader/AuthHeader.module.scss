@@ -1,0 +1,70 @@
+@use '../../globals.scss' as g;
+
+.infoSection {
+  width: 100%;
+  background-color: g.$bg-light; 
+  padding: 50px 40px;
+  text-align: center;
+  box-sizing: border-box;
+  border-radius: 8px;
+  margin-bottom: 40px;
+
+  @media (max-width: g.$breakpoint-tablet) {
+    padding: 35px 20px;
+    margin-bottom: 25px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: g.$text-dark;
+    margin: 0 0 15px 0;
+
+    @media (max-width: g.$breakpoint-mobile) {
+      font-size: 1.6rem;
+    }
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: #666666;
+    max-width: 680px;
+    margin: 0 auto 20px auto;
+    line-height: 1.6;
+  }
+
+  .inlineLink {
+    color: g.$accent-red;
+    text-decoration: underline;
+    font-weight: 600;
+    font-size: 0.95rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.logoutNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 15px;
+
+  .divider {
+    color: #cccccc;
+    user-select: none;
+  }
+
+  .logoutBtn {
+    background: none;
+    border: none;
+    color: g.$accent-red;
+    text-decoration: underline;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+  }
+}

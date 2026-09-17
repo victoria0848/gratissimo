@@ -1,0 +1,107 @@
+@use '../globals.scss' as g;
+
+.formWrapper {
+  width: 100%;
+  max-width: 480px; 
+  margin: 0 auto 60px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    color: g.$text-dark;
+    margin-bottom: 30px;
+  }
+}
+
+.authForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: g.$text-dark;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e2d9d5; 
+    border-radius: 6px; 
+    background-color: #fafafa;
+    font-size: 0.95rem;
+    color: g.$text-dark;
+    outline: none;
+    box-sizing: border-box;
+
+    &::placeholder { color: #bbbbbb; }
+    &:focus { 
+        border-color: g.$accent-red; 
+        background-color: g.$white; 
+    }
+  }
+
+  .submitBtn {
+    width: 100%;
+    background-color: g.$dark-red;
+    color: g.$white;
+    border: none;
+    padding: 13px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 25px; 
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.2s;
+
+    &:hover { background-color: #610404; }
+  }
+}
+
+.feedbackMsg {
+  margin-top: 15px;
+  font-size: 0.95rem;
+  color: g.$accent-red;
+  text-align: center;
+}
+
+.toggleLink {
+  color: g.$accent-red;
+  text-decoration: underline;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+// LOGGET IN
+.successWrapper {
+  text-align: center;
+  padding: 60px 20px;
+
+  h1 { 
+    font-size: 2rem; 
+    color: g.$text-dark; 
+    margin-bottom: 10px; 
+}
+  p { 
+    color: #666666; 
+}
+
+  .logoutBtn {
+    background-color: g.$dark-red;
+    color: g.$white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    &:hover { background-color: #610404; }
+  }
+}
