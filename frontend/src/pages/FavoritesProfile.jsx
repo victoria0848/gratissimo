@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useFetch } from '../hooks/useFetch';
 import { AuthContext } from '../context/AuthContextProvider';
 import { JobCard } from '../components/JobCard/JobCard';
+import style from './ProfilePage.module.scss'; 
 
 export function ProfileFavoritter() {
     const { authToken } = useContext(AuthContext);
@@ -43,9 +44,7 @@ export function ProfileFavoritter() {
     };
 
     return (
-        <section aria-label="Dine gemte favoritter">
-            <h3>Mine favoritter ({favorites?.length || 0})</h3>
-            
+        <section aria-label="Dine gemte favoritter"> 
             {currentFavorites.length > 0 ? (
                 currentFavorites.map(fav => (
                     <JobCard 
@@ -73,8 +72,8 @@ export function ProfileFavoritter() {
 
             {/* PAGINATION */}
             {pageNumbers.length > 1 && (
-                <nav className="paginationNav" aria-label="Side-navigation">
-                    <ul className="paginationList" style={{ display: "flex", listStyle: "none", gap: "10px", padding: 0 }}>
+                <nav className="paginationNav">
+                    <ul className="paginationList">
                         {pageNumbers.map(number => (
                             <li key={number}>
                                 <button 

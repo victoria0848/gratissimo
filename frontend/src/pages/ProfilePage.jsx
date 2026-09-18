@@ -5,6 +5,7 @@ import { AuthContext } from '../context/AuthContextProvider';
 import { AuthHeader } from '../components/AuthHeader/AuthHeader';
 import { JobCard } from '../components/JobCard/JobCard';
 import { ProfileFavoritter } from './FavoritesProfile';
+import style from './ProfilePage.module.scss';
 
 export function ProfilePage() {
     const { authToken, user } = useContext(AuthContext);
@@ -62,7 +63,7 @@ export function ProfilePage() {
     };
 
     return (
-        <main className="container">
+        <main className={style.profilePageWrapper}>
             
             {/* INFO-BOX */}
             <AuthHeader>
@@ -72,28 +73,27 @@ export function ProfilePage() {
                 </p>
                 <nav>
                     <NavLink to="/login">Log ud</NavLink>
-                    <span> | </span>
                     <NavLink to="/rediger-profil">Rediger Profil</NavLink>
                 </nav>
             </AuthHeader>
 
             {/* TOGGLE BUTTONS*/}
-            <nav aria-label="Administrations-faner">
-                <button type="button" onClick={() => { setActiveTab("annoncer"); setCurrentPage(1); }}>
+            <nav className={style.tabNav}>
+                <button type="button" onClick={() => { setActiveTab("annoncer"); setCurrentPage(1); }}
+                    className={activeTab === "annoncer" ? style.activeTabBtn : style.tabBtn}>
                     Mine annoncer
                 </button>
-                <button type="button" onClick={() => { setActiveTab("favoritter"); setCurrentPage(1); }}>
+                <button type="button" onClick={() => { setActiveTab("favoritter"); setCurrentPage(1); }}
+                    className={activeTab === "annoncer" ? style.activeTabBtn : style.tabBtn}>
                     Mine favoritter
                 </button>
             </nav>
 
-            <section aria-label="Administrationsindhold">
+            <section className={style.contentWrapper}>
                 
                 {/* MY JOBS PART*/}
                 {activeTab === "annoncer" && (
-                    <section aria-label="Dine oprettede annoncer">
-                        <h3>Mine annoncer ({mineAnnoncer.length})</h3>
-                        
+                    <section>              
                         {mineAnnoncer.length > 0 ? (
                             mineAnnoncer.map(job => (
                                  <JobCard 
@@ -122,13 +122,15 @@ export function ProfilePage() {
 
                     {/* PAGINATION*/}
                     {pageNumbers.length > 1 && (
-                    <nav>
-                        <ul>
+                    <nav className={style.paginationNav}>
+                        <ul className={style.paginationList}>
                             {pageNumbers.map(number => (
                             <li key={number}>
                                     <button 
                                         type="button"
-                                        onClick={() => setCurrentPage(number)}  >
+                                        onClick={() => setCurrentPage(number)}
+                                        className={currentPage === number ? style.activePageBtn : style.pageBtn}
+                                        >
                                         {number}
                                     </button>
                                 </li>

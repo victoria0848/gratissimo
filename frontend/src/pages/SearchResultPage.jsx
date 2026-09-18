@@ -1,12 +1,15 @@
-import React, { useState } from 'react'; 
+import React, { useState, useContext } from 'react'; 
 import { useLocation } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch';
+import { AuthContext } from '../context/AuthContextProvider';
 import { SearchBar } from '../components/SearchBar/SearchBar'; 
 import { JobCard } from '../components/JobCard/JobCard';
 import style from './SearchResultPage.module.scss';
 
 export function SearchResultPage() {
     const location = useLocation();
+
+   const { authToken } = useContext(AuthContext); 
 
     // API DATA
      const { data: listings, isLoading, error } = useFetch("/job-listings");
@@ -43,7 +46,17 @@ export function SearchResultPage() {
     }
 
     const handleGemFavorit = (jobId) => {
-        alert(`Log ind påkrævet: Du skal være logget ind med dit Bearer Token for at gemme jobannonce #${jobId} i dine favoritter. ⭐`);
+        const token = authToken?.accessToken || authToken;
+        
+        if (!token) {
+            alert("Log ind påkrævet: Du skal være logget ind med din profil for at gemme favoritter!");
+        } else {
+            fetch("http://localhost:4000/api/favorites", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+                body: JSON.stringify({ jobListingId: jobId })
+            }).then(() => alert("Annonce er gemt i dine favoritter!"));
+        }
     };
 
     if (isLoading) return <div className={style.centerMsg}><p>Henter jobannoncer... ⏳</p></div>;

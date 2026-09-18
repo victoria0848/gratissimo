@@ -40,7 +40,7 @@ export function SearchBar() {
             <form onSubmit={handleSearchSubmit} className={style.searchForm}>
                 <div className={style.searchBarRow}>
                     <div className={style.inputWrapper}>
-                        <img src="/icons/icons8-search50.png" alt="Søg" className={style.searchIcon} />
+                        <img src="/icons/icons8-search-50.png" alt="Søg" className={style.searchIcon} />
                         <input 
                             type="text" 
                             placeholder="Eks. cafémedhjælper..." 
