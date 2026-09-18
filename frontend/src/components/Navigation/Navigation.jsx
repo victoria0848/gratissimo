@@ -6,31 +6,43 @@ import style from "./Navigation.module.scss";
 export function Navigation() {
     const { authToken, logout } = useContext(AuthContext);
 
+    // SET CLASS ON IF ACTIVE
+    const checkActive = ({ isActive }) => isActive ? style.active : "";
+
     return (
         <header className={style.mainHeader}>
-        <nav className={style.navStyle}>
-            {/* LOGO */}
-            <NavLink to={"/"} className={style.logoLink}>
-                <figure className={style.logoFrame}>
-                    <img src="/logo/logo-white.png" alt="Gratissimo-Logo" className={style.logoImage} />
-                </figure>
-            </NavLink>
+            <div className={style.headerContainer}>
+                
+                {/* LOGO  */}
+                <NavLink to={"/"} className={style.logoLink}>
+                    <figure className={style.logoFrame}>
+                        <img src="/logo/logo-white.png" alt="Gratissimo-Logo" className={style.logoImage} />
+                    </figure>
+                </NavLink>
+            </div>
+
+            {/* NAVBAR */}
+        <nav className={style.navBar}>
+            <div className={style.navContainer}>
             
             {/* LINKS */}
-            <ul>
+            <ul className={style.leftLinks}>
             <li>
-                <NavLink to={"/jobs"} className={({ isActive }) => isActive ? style.active : ""}>Alle Jobs</NavLink>
+                <NavLink to={"/jobs"} className={checkActive}>Alle Jobs</NavLink>
             </li>
             <li>
-                <NavLink to={"/opret"} className={({ isActive }) => isActive ? style.active : ""}>Opret Annonce</NavLink>
+                <NavLink to={"/opret"} className={checkActive}>Opret annonce</NavLink>
             </li>
             <li>
-                <NavLink to={"/nyheder"} className={({ isActive }) => isActive ? style.active : ""}>Nyheder</NavLink>
+                <NavLink to={"/nyheder"} className={checkActive}>Nyheder</NavLink>
             </li>
-            <li>
+            </ul>
+            {/* PROFILE / LOGIND LINKS*/}
+            <div className={style.rightLinks}>
             {!authToken ? (
                 <>
                     <NavLink to={"/registrer"} className={style.registerLink}>Opret Profil</NavLink>
+                    <span className={style.divider}>|</span>
                     <NavLink 
                         className={({ isActive }) => (isActive ? style.active : "")}
                         to={"/login"}
@@ -41,11 +53,12 @@ export function Navigation() {
                     ) : (
                         <>
                             <NavLink to={"/profil"}>Min Profil</NavLink>
+                            <span className={style.divider}>|</span>
                             <button onClick={logout} className={style.logoutBtn}>Log ud</button>
                         </>
                     )}
-                </li>
-            </ul>
+                </div>
+                </div>
         </nav>
         </header>
     );

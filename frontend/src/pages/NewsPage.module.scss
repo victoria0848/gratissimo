@@ -1,0 +1,193 @@
+@use '../globals.scss' as g;
+
+// PAGE CONTAINER
+.newsPageWrapper {
+  width: 100%;
+  max-width: g.$breakpoint-desktop;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  box-sizing: border-box;
+
+  // TABLET & MOBILE
+  @media (max-width: g.$breakpoint-tablet) {
+    padding: 20px 15px;
+    gap: 35px;
+  }
+}
+
+// MAIN NEWS
+.mainArticle {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: g.$white;
+
+  header {
+    h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: g.$text-dark;
+      line-height: 1.2;
+      margin-bottom: 10px;
+
+      @media (max-width: g.$breakpoint-tablet) {
+        font-size: 1.8rem;
+      }
+      @media (max-width: g.$breakpoint-mobile) {
+        font-size: 1.5rem;
+      }
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #666666;
+      
+      strong {
+        color: g.$text-dark;
+      }
+    }
+  }
+
+  .mainFigure {
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 4px;
+
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: cover;
+      display: block;
+
+      @media (max-width: g.$breakpoint-tablet) {
+        max-height: 350px;
+      }
+      @media (max-width: g.$breakpoint-mobile) {
+        max-height: 220px;
+      }
+    }
+  }
+
+  .mainContent {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: g.$text-dark;
+
+    @media (max-width: g.$breakpoint-mobile) {
+      font-size: 1rem;
+    }
+  }
+}
+
+// NEWS ARCHIVE
+.archiveSection {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  border-top: 1px solid #e2d9d5;
+  padding-top: 40px;
+
+  h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: g.$text-dark;
+
+    @media (max-width: g.$breakpoint-mobile) {
+      font-size: 1.3rem;
+    }
+  }
+}
+
+.archiveList {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+}
+
+.archiveCard {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 15px;
+  background-color: g.$white;
+  border: 1px solid #eeeeee;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+
+  &:hover {
+    border-color: g.$accent-red;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+    h4 {
+      color: g.$accent-red;
+    }
+  }
+
+  .cardFigure {
+    margin: 0;
+    flex-shrink: 0;
+
+    img {
+      width: 150px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+
+      @media (max-width: g.$breakpoint-mobile) {
+        width: 100px;
+        height: 80px;
+      }
+    }
+  }
+
+  .cardContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+
+    span {
+      font-size: 0.85rem;
+      color: #777777;
+    }
+
+    h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: g.$text-dark;
+      margin: 0;
+      transition: color 0.2s;
+
+      @media (max-width: g.$breakpoint-mobile) {
+        font-size: 1rem;
+      }
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #555555;
+      margin: 0;
+
+      @media (max-width: g.$breakpoint-mobile) {
+        display: none; 
+      }
+    }
+  }
+
+  // MOBILE
+  @media (max-width: g.$breakpoint-mobile) {
+    gap: 15px;
+    padding: 10px;
+    align-items: center;
+  }
+}

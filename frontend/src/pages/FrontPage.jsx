@@ -8,14 +8,21 @@ import style from './Frontpage.module.scss';
     export function Frontpage() {
         const { data: jobs } = useFetch("/job-listings");
         const { data: categories } = useFetch("/job-categories");
-        const { data: news } = useFetch("/articles?limit=3");
+        const { data: news } = useFetch("/articles");
 
         const getJobCount = (catId) => {
             if (!jobs) return 0;
             return jobs.filter(job => job.jobCategoryId === catId).length;
     };
 
-    return (
+        const alleKategorier = categories || [];
+
+        const visTreTilfaeldigeNyheder = React.useMemo(() => {
+            if (!news || news.length === 0) return [];
+            return [...news].sort(() => 0.5 - Math.random()).slice(0, 3);
+        }, [news]); 
+        
+        return (
         <main className={style.frontpageWrapper}>
             {/* SEARCH WORK */}
             <SearchBar /> 
@@ -24,7 +31,7 @@ import style from './Frontpage.module.scss';
             <section className={style.categorySection}>
                 <h3>Find job ved kategori</h3>
                 <div className={style.categoryGrid}>
-                    {categories?.map(cat => (
+                    {alleKategorier?.map(cat => (
                         <NavLink key={cat.id} to={`/jobs?cat=${cat.id}`} className={style.categoryCard}>
                             <span className={style.categoryName}>{cat.name}</span>
                             <span className={style.jobCount}>{getJobCount(cat.id)}</span>
@@ -37,7 +44,7 @@ import style from './Frontpage.module.scss';
             <section className={style.newsSection}>
                 <h3>Udvalgte nyheder</h3>
                 <div className={style.newsGrid}>
-                {news?.map(item => (
+                {visTreTilfaeldigeNyheder?.map(item => (
                         <NavLink key={item.id} to={`/nyheder?id=${item.id}`} className={style.newsCard}>
                             <figure>
                                 <img src={`http://localhost:4000${item.imageUrl}`} alt={item.title} />

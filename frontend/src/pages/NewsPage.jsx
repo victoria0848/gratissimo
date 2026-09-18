@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch';
+import style from './NewsPage.module.scss';
 
 export function NewsPage() {
     const location = useLocation();
@@ -42,43 +43,46 @@ export function NewsPage() {
         ? selectedArticle.createdAt.substring(0, 10).split('-').reverse().join('/') 
         : "Ikke oplyst";
 
+    const visSexNyheder = allArticles ? allArticles.slice(0, 6) : [];
+
     return (
-        <main>
+        <main className={style.newsPageWrapper}>
             
             {/* BIG ARTICLE */}
-            <article aria-label="Udvalgt hovednyhed">
+            <article className={style.mainArticle}>
                 <header>
                     <h2>{selectedArticle.title}</h2>
                     <p>Skrevet af: <strong>{selectedArticle.author || "Redaktionen"}</strong> | Dato: {formatertDato}</p>
                 </header>
 
-                <figure>
-                    <img src={`http://localhost:4000${selectedArticle.imageUrl}`} alt={selectedArticle.title} />
+                <figure className={style.mainFigure}>
+                   <img src={`http://localhost:4000${selectedArticle.imageUrl}`} alt={selectedArticle.title} />
                 </figure>
 
-                <section>
+                <section className={style.mainContent}>
                     <p>{selectedArticle.content}</p>
                 </section>
             </article>
 
             {/* NEWS */}
-            <section aria-label="Nyhedsarkiv">
+            <section className={style.archiveSection}>
                 <h3>Alle Nyheder</h3>
                 
-                <ul>
-                    {allArticles?.map(item => (
+                <ul className={style.archiveList}>
+                    {visSexNyheder?.map(item => (
                         <li key={item.id}>
                             <article 
                                 onClick={() => handleArticleClick(item.id)}
+                                className={style.archiveCard} 
                                 style={{ cursor: 'pointer' }} 
                                 role="button"
                                 tabIndex={0}
                                 aria-label={`Læs nyheden: ${item.title}`}
                             >
-                                <figure>
-                                    <img src={`http://localhost:4000${item.imageUrl}`} alt={item.title} width="150" />
+                                <figure className={style.cardFigure}>
+                                  <img src={`http://localhost:4000${item.imageUrl}`} alt={item.title} />
                                 </figure>
-                                <section>
+                                <section className={style.cardContent}>
                                     <span>Af: {item.author || "Redaktionen"}</span>
                                     <h4>{item.title}</h4>
                                     <p>{item.teaser || item.content?.substring(0, 70)}...</p>
