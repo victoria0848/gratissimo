@@ -52,10 +52,10 @@ export function SearchResultPage() {
     return (
         <main className={style.searchPageWrapper}>
 
-        {/* SEARCH WORK*/}
+        {/* SEARCH WORK */}
         <SearchBar />   
            
-        {/* JOBCARDS*/}
+        {/* JOBCARDS */}
              <section className={style.listContainer} aria-label="Søgeresultater">
                 <p className={style.resultCount}>Viser {filteredJobs.length} ledige stillinger</p>
                 
@@ -91,7 +91,7 @@ export function SearchResultPage() {
                             <li key={number}>
                                     <button 
                                         type="button"
-                                        onClick={() => setCurrentPage(number)} // 🌟 Slettet scrollTo, så den bare skifter side helt simpelt!
+                                        onClick={() => setCurrentPage(number)} 
                                         className={currentPage === number ? style.activePageBtn : style.pageBtn}
                                     >
                                         {number}

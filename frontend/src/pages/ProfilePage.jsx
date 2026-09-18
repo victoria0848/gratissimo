@@ -111,6 +111,8 @@ export function ProfilePage() {
                                     workHome="On-site"
                                     createdAt={job.createdAt}
                                     onGemFavorit={() => handleSletAnnonce(job.id)}
+                                    isProfilePage={true}
+                                    activeTab="annoncer"
                                 />
                             ))
                         ) : (

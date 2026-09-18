@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom'; 
 import { AuthContext } from '../context/AuthContextProvider';
 import { AuthHeader } from '../components/AuthHeader/AuthHeader'; 
-import style from './LoginPage.module.scss';
+import style from './LoginPage.module.scss'; 
 
 export function LoginPage() {
     const { authToken, setAuthToken, logout } = useContext(AuthContext);
@@ -17,19 +17,23 @@ export function LoginPage() {
         const password = e.target.password.value;
 
         try {
-            const res = await fetch("http://localhost:4000/api/login", {
+             const res = await fetch("http://localhost:4000/api/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ 
+                    username: email, 
+                    password: password 
+                }),
             });
-
-            const data = await res.json();
+           const data = await res.json().catch(() => ({}));
             
-            if (res.ok) {
+           if (res.ok) {
                 setAuthToken(data?.accessToken); 
                 setMessage("Du er nu logget ind!");
+                //BACK TO LOGIN
+                navigate("/profil");
             } else {
-                setMessage(`Fejl: ${data.message || "Forkert login"}`);
+                setMessage(`Fejl: ${data.message || "Forkert login eller adgangskode"}`);
             }
         } catch (err) {
             setMessage("Kunne ikke oprette forbindelse til serveren.");
@@ -45,7 +49,7 @@ export function LoginPage() {
                     {/* LOGIN FORM */}
                     <section className={style.formWrapper}>
                         <h2>Log ind</h2>
-                        
+
                         <form onSubmit={login} className={style.authForm}>
                             <label >
                                 Email
@@ -69,7 +73,6 @@ export function LoginPage() {
                 /* IF LOG IN */
                 <section className={style.successWrapper}>
                     <h1>Du er logget ind!</h1>
-                    <p>Din session er active med dit Bearer Token gemt sikkert i browserens cookies.</p>
                     <br />
                     <NavLink to="/" className={style.toggleLink}>Gå til forsiden</NavLink>
                     <br /><br />

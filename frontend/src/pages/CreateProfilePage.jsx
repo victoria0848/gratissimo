@@ -17,6 +17,9 @@ export function CreateProfilePage() {
         const firstname = e.target.firstname.value;
         const lastname = e.target.lastname.value;
         const phone = e.target.phone.value;
+        const address = e.target.address?.value || "Ikke oplyst";
+        const city = e.target.city?.value || "Ikke oplyst";
+        const zipcode = e.target.zipcode?.value || "0000";
 
         if (password !== repeatPassword) {
             setMessage("Fejl: Adgangskoderne er ikke ens.");
@@ -24,24 +27,40 @@ export function CreateProfilePage() {
         }
 
         try {
-            const res = await fetch("http://localhost:4000/api/register", {
+            const res = await fetch("http://localhost:4000/api/users", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, password, firstname, lastname, phone })
+                headers: { 
+                    "Content-Type": "application/json" 
+                },
+                body: JSON.stringify({ 
+                    email: email, 
+                    password: password, 
+                    firstname: firstname, 
+                    lastname: lastname, 
+                    phone: phone,
+                    address: address,
+                    city: city,
+                    zipcode: zipcode
+                })
             });
 
-            const data = await res.json();
+            const data = await res.json().catch(() => ({}));
+            console.log("Server Svar data: ", data);
 
             if (res.ok) {
                 setMessage("Profilen blev oprettet! Du viderestilles til login...");
+                e.target.reset(); 
+
                 setTimeout(() => {
                     navigate("/login"); 
                 }, 2000);
             } else {
-                setMessage(`Fejl: ${data.message || "Kunne ikke oprette profil"}`);
+                const data = await res.json().catch(() => ({}));
+                setMessage(`Fejl fra serveren: ${data.message || "Kunne ikke oprette profil."}`);
             }
         } catch (err) {
-            setMessage("Kunne ikke oprette forbindelse til serveren.");
+            setMessage("Kunne ikke oprette forbindelse");
+            console.error(err);
         }
     };
 
@@ -49,7 +68,7 @@ export function CreateProfilePage() {
         <main className="container">
             <AuthHeader />
 
-            // Create profile
+            // CREATE PROFILE
             <section className={style.formWrapper}>
                 <h2>Opret ny profil</h2>
                 <br />
