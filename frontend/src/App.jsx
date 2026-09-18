@@ -5,28 +5,31 @@ import { NewsPage } from "./pages/NewsPage";
 import { SearchResultPage } from "./pages/SearchResultPage";
 import { CreateJobPage } from './pages/CreateJobPage'; 
 import { CreateProfilePage } from "./pages/CreateProfilePage";
+import { ProfilePage } from './pages/ProfilePage';
 import { LoginPage } from "./pages/LoginPage";
-import { AuthcontextProvider } from "./context/AuthContextProvider";
+import { AuthContextProvider } from "./context/AuthContextProvider"; 
 import { CookiesProvider } from "react-cookie";
 
 export default function App() {
   return (
     <CookiesProvider>
-    <AuthcontextProvider>
+    <AuthContextProvider>
     <BrowserRouter>
       <Routes>
-        {/* MainLayout */}
+
+        {/* MAIN LAYOUT */}
         <Route element={<MainLayout />}>
           <Route index element={<Frontpage />} />
           <Route path="/nyheder" element={<NewsPage />} />
           <Route path="/jobs" element={<SearchResultPage />} />
-          <Route path="opret" element={<CreateJobPage />} />
+          <Route path="/opret" element={<CreateJobPage />} />
           <Route path="/registrer" element={<CreateProfilePage />} />
+          <Route path="/profil" element={<ProfilePage />} />
           <Route path="/login" element={<LoginPage />} />
         </Route>
-      </Routes>
+        </Routes>
     </BrowserRouter>
-    </AuthcontextProvider>
+    </AuthContextProvider>
     </CookiesProvider>
   );
 }

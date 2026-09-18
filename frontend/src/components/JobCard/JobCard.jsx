@@ -14,17 +14,51 @@ export function JobCard({
     city, 
     workHome, 
     createdAt,
-    onGemFavorit 
+    onGemFavorit,
+    isProfilePage = false, 
+    activeTab = ""
 }) {
     const [isExpanded, setIsExpanded] = useState(false);
 
     const formatertDato = createdAt ? createdAt.substring(0, 10).split('-').reverse().join('/') : "Ikke oplyst";
 
+    const renderButtons = () => {
+        if (isProfilePage && activeTab === "annoncer") {
+            return (
+                <>
+                    <button type="button" onClick={() => onGemFavorit(id)} className={style.sletBtn}>Slet</button>
+                    <button type="button" className={style.redigerBtn}>Rediger</button>
+                </>
+            );
+        } 
+        else if (isProfilePage && activeTab === "favoritter") {
+            return (
+                <>
+                    <button type="button" onClick={() => onGemFavorit(id)} className={style.gemHeartBtn}>Fjern</button>
+                    <button type="button" onClick={() => setIsExpanded(!isExpanded)} className={style.aabenBtn}>
+                        {isExpanded ? "Luk" : "Åben"}
+                    </button>
+                </>
+            );
+        } 
+        else {
+            // Standardsiden (Søgesiden / Forsiden)
+            return (
+                <>
+                    <button type="button" onClick={() => onGemFavorit(id)} className={isExpanded ? style.gemHeartBtn : style.gemBtn}>Gem</button>
+                    <button type="button" onClick={() => setIsExpanded(!isExpanded)} className={isExpanded ? style.lukBtn : style.aabenBtn}>
+                        {isExpanded ? "Luk" : "Åben"}
+                    </button>
+                </>
+            );
+        }
+    };
+
     return (
         <article className={style.jobCard}>
             
             {/* TOP AF KORTET*/}
-            <section className={style.cardTopRow} aria-label="Overordnet jobinformation">
+            <section className={style.cardTopRow}>
                 <div className={style.leftInfo}>
                     <span className={style.metaCompany}>{company}</span>
                     <h4>{title}</h4>
@@ -83,27 +117,9 @@ export function JobCard({
                 </section>
             )}
 
-            {/* BUND-KNAPPERNE */}
-            <footer className={style.cardActions}>
-                {isExpanded ? (
-                    <>
-                        <button type="button" onClick={() => onGemFavorit(id)} className={style.gemHeartBtn}>
-                            Gem 
-                        </button>
-                        <button type="button" onClick={() => setIsExpanded(false)} className={style.lukBtn}>
-                            Luk
-                        </button>
-                    </>
-                ) : (
-                    <>
-                        <button type="button" onClick={() => onGemFavorit(id)} className={style.gemBtn}>
-                            Gem 
-                        </button>
-                        <button type="button" onClick={() => setIsExpanded(true)} className={style.aabenBtn}>
-                            Åben
-                        </button>
-                    </>
-                )}
+            {/* BUTTONS */}
+           <footer className={style.cardActions}>
+                {renderButtons()}
             </footer>
 
         </article>
